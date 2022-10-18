@@ -1,13 +1,23 @@
 <template>
 	<div>
 		<div class="space-y-6">
-			<card-article-title
-				v-for="(article, index) in articles"
-				:key="index"
-				:title="article.title"
-				:path="'/blog/' + article.slug"
-				:createdAt="article.createdAt"
-			/>
+			<template v-if="articles.length > 0">
+				<card-article-title
+					v-for="(article, index) in articles"
+					:key="index"
+					:title="article.title"
+					:path="'/blog/' + article.slug"
+					:createdAt="article.createdAt"
+				/>
+			</template>
+			<template v-else>
+				<div class="text-center mb-16">
+					<h1 class="text-3xl font-bold mb-3">Artikel habis 😮</h1>
+					<p class="opacity-80">
+						Terima kasih sudah membaca blog saya. Tunggu updatean berikutnya, ya
+					</p>
+				</div>
+			</template>
 
 			<div class="flex justify-center">
 				<NuxtLink
@@ -17,6 +27,7 @@
 					>Prev</NuxtLink
 				>
 				<NuxtLink
+					:disabled="!nextPage"
 					:to="'/blog/page/' + (currentPageNumber + 1)"
 					class="btn btn-ghost"
 					>Next</NuxtLink
@@ -39,10 +50,6 @@ export default {
 			.skip(numberArticles * (currentPageNumber - 1))
 			.sortBy('createdAt', 'desc')
 			.fetch()
-
-		if (!articles.length) {
-			return error({ statusCode: 404, message: 'No articles found!' })
-		}
 
 		const nextPage = articles.length === numberArticles
 		const previousPage = currentPageNumber > 1
