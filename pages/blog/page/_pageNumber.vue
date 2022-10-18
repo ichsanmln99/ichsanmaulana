@@ -22,14 +22,11 @@
 			<div class="flex justify-center">
 				<NuxtLink
 					:disabled="!previousPage"
-					:to="'/blog/page/' + (currentPageNumber - 1)"
+					:to="previousPageUrl"
 					class="btn btn-ghost"
 					>Prev</NuxtLink
 				>
-				<NuxtLink
-					:disabled="!nextPage"
-					:to="'/blog/page/' + (currentPageNumber + 1)"
-					class="btn btn-ghost"
+				<NuxtLink :disabled="!nextPage" :to="nextPageUrl" class="btn btn-ghost"
 					>Next</NuxtLink
 				>
 			</div>
@@ -61,6 +58,16 @@ export default {
 			currentPageNumber,
 			params,
 		}
+	},
+	computed: {
+		nextPageUrl() {
+			return this.nextPage ? '/blog/page/' + (this.currentPageNumber + 1) : ''
+		},
+		previousPageUrl() {
+			return this.previousPage
+				? '/blog/page/' + (this.currentPageNumber - 1)
+				: ''
+		},
 	},
 }
 </script>
