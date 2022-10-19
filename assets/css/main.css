@@ -13,3 +13,12 @@
 .nuxt-content-editor {
 	@apply textarea textarea-ghost;
 }
+
+.form-control {
+	@apply mb-3;
+}
+
+input,
+textarea {
+	@apply placeholder:opacity-40;
+}
