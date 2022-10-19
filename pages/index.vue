@@ -10,7 +10,9 @@
         <p class="opacity-80 mb-4">Web Developer Stories</p>
         <div class="space-x-2">
           <a class="btn btn-sm btn-ghost" href="#">👨 Tentang Saya</a>
-          <a class="btn btn-sm btn-ghost" href="#">📬 Kontak</a>
+          <NuxtLink class="btn btn-sm btn-ghost" to="/contact"
+            >📬 Kontak</NuxtLink
+          >
         </div>
       </div>
     </div>
