@@ -8,6 +8,7 @@
 				<input
 					type="text"
 					placeholder="Nama Kamu"
+					name="name"
 					class="input input-bordered w-full"
 				/>
 			</div>
@@ -18,6 +19,7 @@
 				<input
 					type="text"
 					placeholder="Alamat Email"
+					name="email"
 					class="input input-bordered w-full"
 				/>
 			</div>
@@ -27,6 +29,7 @@
 				</label>
 				<textarea
 					class="textarea textarea-bordered placeholder-opacity-30"
+					name="message"
 					placeholder="Pesan Kamu"
 					rows="8"
 				></textarea>
