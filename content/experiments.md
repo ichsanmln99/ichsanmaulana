@@ -1,18 +1,9 @@
 ---
 title: Karya / Eksperimen
-description: 'Empower your NuxtJS application with @nuxt/content module: write in a content/ directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.'
+description: 'Kumpulan Karya atau Eksperimen hasil gabut saya'
 ---
 
-Empower your NuxtJS application with `@nuxtjs/content` module: write in a `content/` directory and fetch yohur Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a **Git-based Headless CMS**.
-
-## Writing contenten
-
-Learn how to write your `content/`, supporting Markdown, YAML, CSV and JSON: https://content.nuxtjs.org/writing.
-
-## Fetching content
-
-Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetching.
-
-## Displaying content
-
-Learn how to display your Markdown content with the `<nuxt-content>` component directly in your template: https://content.nuxtjs.org/displaying.
+### Karya atau Eksperimen buah hasil dari gabut
+Di halaman ini saya akan me-*list*  Karya yang saya buat. tapi maaf, untuk saat ini belum ada yang bisa saya bagikan :( 
+    
+cek lagi nanti ya.

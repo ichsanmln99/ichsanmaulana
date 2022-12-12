@@ -10,6 +10,12 @@
 					:createdAt="article.createdAt"
 				/>
 			</template>
+			<template v-else-if="articelNotExists">
+				<div class="text-center mb-16">
+					<h1 class="text-3xl font-bold mb-3">Belum ada Artikel</h1>
+					<NuxtLink class="link" to="/">ke Halaman Utama</NuxtLink>
+				</div>
+			</template>
 			<template v-else>
 				<div class="text-center mb-16">
 					<h1 class="text-3xl font-bold mb-3">Artikel habis 😮</h1>
@@ -19,7 +25,7 @@
 				</div>
 			</template>
 
-			<div class="flex justify-center">
+			<div class="flex justify-center" v-if="!articelNotExists">
 				<NuxtLink
 					:disabled="!previousPage"
 					:to="previousPageUrl"
@@ -67,6 +73,9 @@ export default {
 			return this.previousPage
 				? '/blog/page/' + (this.currentPageNumber - 1)
 				: ''
+		},
+		articelNotExists() {
+			return this.articles.length < 1 && this.currentPageNumber === 1
 		},
 	},
 }

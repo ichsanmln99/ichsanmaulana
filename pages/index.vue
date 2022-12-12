@@ -7,9 +7,11 @@
       />
       <div class="text-center">
         <h1 class="font-extrabold text-3xl">Bojjidev</h1>
-        <p class="opacity-80 mb-4">Web Developer Stories</p>
+        <p class="opacity-80 mb-4">a Web Developer Notes</p>
         <div class="space-x-2">
-          <a class="btn btn-sm btn-ghost" href="#">👨 Tentang Saya</a>
+          <NuxtLink class="btn btn-sm btn-ghost" to="/about"
+          >👨 Tentang Saya</NuxtLink
+        >
           <NuxtLink class="btn btn-sm btn-ghost" to="/contact"
             >📬 Kontak</NuxtLink
           >
@@ -20,9 +22,8 @@
       <div class="mb-8">
         <h2 class="font-extrabold text-xl mb-2">Hai 👋</h2>
         <p class="opacity-80">
-          Semantic color names make more sense because when we design
-          interfaces, we don't just use any random color. We define a specific
-          color palette with names like primary, secondary, etc.
+          Salam Kenal, nama saya Bojji (bukan nama asli), Seorang Web Developer. 
+          Halaman ini saya buat sebagai catatan belajar dan media berbagi tentang apa yang saya suka.
         </p>
       </div>
       <ul class="menu-list space-y-4">
@@ -40,7 +41,7 @@
       </ul>
     </div>
 
-    <div>
+    <div v-if="articles.length > 0">
       <h3 class="font-extrabold text-lg mb-4">Tulisan Baru</h3>
       <div class="space-y-6">
         <card-article-title
@@ -48,7 +49,7 @@
           :key="index"
           :title="article.title"
           :path="'/blog/' + article.slug"
-          :createdAt="article.createdAt"
+          :created-at="article.createdAt"
         />
       </div>
     </div>
@@ -57,8 +58,8 @@
 
 <script>
 export default {
-  layout: 'layoutDefault',
   name: 'IndexPage',
+  layout: 'layoutDefault',
   async asyncData({ $content }) {
     const articles = await $content('articles')
       .limit(3)
