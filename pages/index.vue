@@ -65,6 +65,7 @@ export default {
       .limit(3)
       .sortBy('createdAt', 'desc')
       .fetch()
+      .catch(()=>([]))
 
     return {
       articles,

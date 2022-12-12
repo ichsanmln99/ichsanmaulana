@@ -7,7 +7,7 @@
 					:key="index"
 					:title="article.title"
 					:path="'/blog/' + article.slug"
-					:createdAt="article.createdAt"
+					:created-at="article.createdAt"
 				/>
 			</template>
 			<template v-else-if="articelNotExists">
@@ -25,7 +25,7 @@
 				</div>
 			</template>
 
-			<div class="flex justify-center" v-if="!articelNotExists">
+			<div v-if="!articelNotExists" class="flex justify-center">
 				<NuxtLink
 					:disabled="!previousPage"
 					:to="previousPageUrl"
@@ -53,6 +53,7 @@ export default {
 			.skip(numberArticles * (currentPageNumber - 1))
 			.sortBy('createdAt', 'desc')
 			.fetch()
+			.catch(()=>([]))
 
 		const nextPage = articles.length === numberArticles
 		const previousPage = currentPageNumber > 1

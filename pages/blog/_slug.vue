@@ -11,7 +11,7 @@
 export default {
 	layout: 'layoutMainNavbar',
 	async asyncData({ $content, params }) {
-		const article = await $content('articles', params.slug).fetch()
+		const article = await $content('articles', params.slug).fetch().catch(()=>([]))
 
 		return {
 			article,
