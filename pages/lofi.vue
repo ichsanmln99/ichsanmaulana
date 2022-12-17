@@ -7,11 +7,11 @@
             </div>
             <div class="flex justify-center">
                 <div ref="playbutton" class="w-96 h-96 flex items-center justify-center group cursor-pointer" @click="setAction()">
-                    <img :src="isPaused ? 'play.svg' : 'pause.svg'" class="h-[24px] w-auto shadow-green hidden group-hover:block" alt="">
+                    <img :src="isPaused ? '/play.svg' : '/pause.svg'" class="h-[24px] w-auto shadow-green hidden group-hover:block" alt="">
                 </div>
             </div>
             <div class="flex">
-                <a class="text-shadow-green cursor-pointer" @click="pickRandomVideo()">
+                <a class="text-shadow-green cursor-pointer line-clamp-2" @click="pickRandomVideo()">
                     Now playing <span class="blink">:</span> {{currentVideo.video_name}}
                 </a>
             </div>
