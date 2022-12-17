@@ -55,7 +55,7 @@ export default {
         bgImage(){
             const randomNumber = Math.floor(Math.random() * 8) + 1;
 
-            return `lofi-${randomNumber}.gif` 
+            return `/lofi-${randomNumber}.gif` 
         }
     },
     destroyed(){
