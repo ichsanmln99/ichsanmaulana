@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="flex">
-                <a class="text-shadow-green cursor-pointer line-clamp-2" @click="pickRandomVideo()">
+                <a class="text-shadow-green cursor-pointer line-clamp-2" @click="setRandomVideoAndBackground()">
                     Now playing <span class="blink">:</span> {{currentVideo.video_name}}
                 </a>
             </div>
@@ -45,18 +45,12 @@ export default {
     data(){
         return {
             currentVideo:{},
+            bgImage:"",
             isPaused:false
         }
     },
     fetch(){
-        this.pickRandomVideo();
-    },
-    computed:{
-        bgImage(){
-            const randomNumber = Math.floor(Math.random() * 8) + 1;
-
-            return `/lofi-${randomNumber}.gif` 
-        }
+        this.setRandomVideoAndBackground();
     },
     destroyed(){
         window.removeEventListener('keypress', this.setActionOnSpaceKey);
@@ -65,7 +59,17 @@ export default {
         window.addEventListener('keypress', this.setActionOnSpaceKey);
     },
     methods: {
-        pickRandomVideo(){
+        setRandomVideoAndBackground(){
+            this.setRandomVideo();
+            this.setRandomBackground();
+        },
+        setRandomBackground(){
+            const TOTAL_BACKROUND = 8;
+            const randomNumber = Math.floor(Math.random() * TOTAL_BACKROUND) + 1;
+            
+            this.bgImage = `/lofi-${randomNumber}.gif`
+        },
+        setRandomVideo(){
             const videos = this.lofis.data;
             const randomVideo = videos[Math.floor(Math.random() * videos.length)];
 
@@ -73,7 +77,8 @@ export default {
 
         },
         setActionOnSpaceKey(e){
-            if(e.code === 'Space' || e.key === " " || e.keyCode === 32){
+            const SPACE_KEY_CODE = 32;
+            if(e.code === 'Space' || e.key === " " || e.keyCode === SPACE_KEY_CODE){
                 this.setAction()
             }
         },
@@ -92,9 +97,12 @@ export default {
         },
         hideUnHidePlaybutton(){
             this.$refs.playbutton.children[0].classList.remove('hidden');
+            
+            const HIDE_BUTTON_DELAY_TIME = 500 
+
             setTimeout(() => {
                 this.$refs.playbutton.children[0].classList.add('hidden');
-            }, 500);
+            }, HIDE_BUTTON_DELAY_TIME);
         }
 
     }
